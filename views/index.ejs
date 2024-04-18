@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="../public/styles.css">
+</head>
+<body>
+  <h1>Todo List</h1>
+  <form action="/todo/add" method="POST">
+    <input type="text" name="item" placeholder="Add a new Todo item">
+    <button type="submit">Add</button>
+  </form>
+  <ul>
+    <% todos.forEach(todo => { %>
+      <li>
+        <%= todo %>
+        <form action="/todo/delete" method="POST" style="display: inline;">
+          <input type="hidden" name="item" value="<%= todo %>">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
