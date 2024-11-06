@@ -1,0 +1,79 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE and editor-specific files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build output
+dist/
+build/
+public/
+
+# Coverage directory used by testing tools
+coverage/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Next.js output
+.next/
+
+# Parcel-bundler cache
+.cache/
+
+# SvelteKit output
+.svelte-kit/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Bower dependency directory (if you use Bower)
+bower_components/
+
+# Protractor end-to-end tests
+e2e/
+
+# Storybook files
+.storybook/
+
+# Serverless directories
+.serverless/
+.webpack/
+
+# React Native
+.expo/
+
+# Nuxt.js output
+.nuxt/
+
+# Temporary files
+tmp/
+temp/
