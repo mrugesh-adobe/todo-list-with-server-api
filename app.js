@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const todoRoutes = require('./routes/todo');
 const todoSSARoutes = require('./routes/todo-ssapi');
 const sapRoutes = require('./routes/sap');
+const deleteRoutes = require('./routes/delete');
 const cors = require('cors');
 
 const app = express();
@@ -23,6 +24,7 @@ app.use('/todo', todoRoutes);
 
 app.use('/todo-ssa', todoSSARoutes)
 app.use('/sap', sapRoutes);
+app.use('/delete', deleteRoutes);
 
 // Home route
 app.get('/', (req, res) => {
@@ -32,6 +34,11 @@ app.get('/', (req, res) => {
 // SAP route
 app.get('/sap', (req, res) => {
   res.render('sap');
+});
+
+// SAP route
+app.get('/delete', (req, res) => {
+  res.render('delete');
 });
 
 // Start the server

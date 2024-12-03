@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Deleter</title>
+</head>
+<body>
+  <h1>Delete URLs</h1>
+  <form id="urlForm" onsubmit="deleteUrls(event)">
+    <textarea id="urlTextArea" rows="10" cols="50" placeholder="Enter each URL on a new line..."></textarea><br>
+    <button type="submit">Delete URLs</button>
+  </form>
+  <h2>Responses</h2>
+  <textarea id="responseOutput" rows="10" cols="50" readonly></textarea><br>
+  <button onclick="copyResponses()">Copy Responses</button>
+
+  <script>
+
+    async function deleteUrls(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const urlList = document.getElementById('urlTextArea').value.split('\n');
+      const responseOutput = document.getElementById('responseOutput');
+      responseOutput.value = ""; // Clear output
+
+      for (const url of urlList) {
+        const trimmedUrl = url.trim();
+        if (!trimmedUrl) continue;
+
+        try {
+          // Extract path from URL
+          const pathMatch = trimmedUrl.match(/aem\.page\/(.*)$/);
+          console.log(pathMatch);
+          const path = pathMatch ? pathMatch[1] : null;
+          if (!path) {
+            responseOutput.value += `Invalid URL: ${trimmedUrl}\n`;
+            continue;
+          }
+
+          // Call backend API to delete
+          const response = await fetch(`/delete`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ path }),
+          });
+
+          if (response.ok) {
+            responseOutput.value += `Deleted: ${path}\n`;
+          } else {
+            responseOutput.value += `Failed to delete: ${path}\n`;
+          }
+        } catch (error) {
+          responseOutput.value += `Error for URL: ${trimmedUrl}\n`;
+        }
+      }
+    }
+
+    // Function to copy the responses from the output textarea
+    function copyResponses() {
+      const responseOutput = document.getElementById('responseOutput');
+      responseOutput.select();
+      document.execCommand('copy');
+      alert('Responses copied to clipboard!');
+    }
+  </script>
+</body>
+</html>
