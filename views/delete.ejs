@@ -29,10 +29,16 @@
         if (!trimmedUrl) continue;
 
         try {
-          // Extract path from URL
-          const pathMatch = trimmedUrl.match(/aem\.page\/(.*)$/);
-          console.log(pathMatch);
-          const path = pathMatch ? pathMatch[1] : null;
+          let path = null;
+          if (trimmedUrl.startsWith('http')) {
+            // Extract path from URL
+            const pathMatch = trimmedUrl.match(/aem\.page\/(.*)$/);
+            path = pathMatch ? pathMatch[1] : null;
+          } else {
+            // Assume it's a path
+            path = trimmedUrl;
+          }
+          
           if (!path) {
             responseOutput.value += `Invalid URL: ${trimmedUrl}\n`;
             continue;
