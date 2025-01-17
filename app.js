@@ -4,6 +4,7 @@ const todoRoutes = require('./routes/todo');
 const todoSSARoutes = require('./routes/todo-ssapi');
 const sapRoutes = require('./routes/sap');
 const deleteRoutes = require('./routes/delete');
+const articles = require('./routes/articles');
 const cors = require('cors');
 
 const app = express();
@@ -25,6 +26,7 @@ app.use('/todo', todoRoutes);
 app.use('/todo-ssa', todoSSARoutes)
 app.use('/sap', sapRoutes);
 app.use('/delete', deleteRoutes);
+app.use('/articles', articles);
 
 // Home route
 app.get('/', (req, res) => {
