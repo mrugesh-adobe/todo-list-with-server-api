@@ -2,8 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-const PREVIEW_API_BASE_URL = 'https://admin.hlx.page/preview/sapudex/builder-prospect/main';
-const LIVE_API_BASE_URL = 'https://admin.hlx.page/live/sapudex/builder-prospect/main';
+const PREVIEW_API_BASE_URL = 'https://admin.hlx.page/preview/org/repo/main';
+const LIVE_API_BASE_URL = 'https://admin.hlx.page/live/org/repo/main';
 const COOKIE_HEADER = ""; // Replace with appropriate cookie string
 
 // Proxy route to handle URL deletion
